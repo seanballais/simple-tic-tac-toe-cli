@@ -154,31 +154,12 @@ int main()
                 while (hasInvalidInput) {
                     // Clear screen first.
                     std::cout << "\033[1;1H"; // Moves cursor to the top left.
-                    std::cout << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n"
-                              << "                                                                                                             \n";
+
+                    // Clear screen.
+                    int clearLinesCtr = 0;
+                    while (clearLinesCtr < 25) {
+                        std::cout << "                                                                                                             \n";
+                    }
 
                     // Render.
                     std::cout << "\033[1;1H"; // Moves cursor to the top left.
@@ -264,6 +245,25 @@ int main()
                 }
 
                 // Check for winning or ending condition.
+                if ((cell1 == 'x' && cell2 == 'x' && cell3 == 'x') || (cell1 == 'o' && cell2 == 'o' && cell3 == 'o')
+                    || (cell4 == 'x' && cell5 == 'x' && cell6 == 'x') || (cell4 == 'o' && cell5 == 'o' && cell6 == 'o')
+                    || (cell7 == 'x' && cell8 == 'x' && cell9 == 'x') || (cell7 == 'o' && cell8 == 'o' && cell9 == 'o')
+                    || (cell1 == 'x' && cell4 == 'x' && cell7 == 'x') || (cell1 == 'o' && cell4 == 'o' && cell7 == 'o')
+                    || (cell2 == 'x' && cell5 == 'x' && cell8 == 'x') || (cell2 == 'o' && cell5 == 'o' && cell8 == 'o')
+                    || (cell3 == 'x' && cell6 == 'x' && cell9 == 'x') || (cell3 == 'o' && cell6 == 'o' && cell9 == 'o')) {
+
+                }
+                if (cell1 != '1'
+                    || cell2 != '2'
+                    || cell3 != '3'
+                    || cell4 != '4'
+                    || cell5 != '5'
+                    || cell6 != '6'
+                    || cell7 != '7'
+                    || cell8 != '8'
+                    || cell9 != '9') {
+                    // No further moves allowed.
+                }
 
                 // Switch players.
                 activePlayer = (activePlayer + 1) % 2;
@@ -275,7 +275,15 @@ int main()
             }
         }
     } else if (option == 'B' || option == 'b') {
-        std::cout << "\033[2J\033[1;1H"; // Clears the screen, and moves cursor to the top left.
+        std::cout << "\033[1;1H"; // Moves cursor to the top left.
+
+        // Clear screen.
+        int clearLinesCtr = 0;
+        while (clearLinesCtr < 50) {
+            std::cout << "                                                                                                             \n";
+        }
+
+        std::cout << "\033[1;1H"; // Moves cursor to the top left.
     } else {
         std::cout << "ERROR! An invalid option somehow passed through!\n";
     }
